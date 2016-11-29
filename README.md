@@ -18,8 +18,10 @@ CARD 1<br/>
 Customer Name: Manish Meshram<br/>
 Card Number: 1001<br/>
 Account Number: 1001<br/>
+PIN: 1234<br/>
 
 CARD 2<br/>
 Customer Name: Rahul Agarwal<br/>
 Card Number: 1002<br/>
 Account Number: 1002<br/>
+PIN: 3456<br/>
