@@ -31,7 +31,7 @@ import com.globant.trial.service.impl.AccountServiceImpl;
 @Path("account")
 public class RestAccountEndpointImpl implements AccountEndpoint{
 	
-	AccountService accountService = new AccountServiceImpl();
+	private AccountService accountService = new AccountServiceImpl();
 	
 	private final static Logger LOGGER = Logger.getLogger(RestAccountEndpointImpl.class.getName());
 

@@ -20,7 +20,7 @@ import com.globant.trial.service.exception.ServiceException;
  */
 public class AccountServiceImpl implements AccountService {
 
-	AccountDao accountDao = new AccountDaoImpl();
+	private AccountDao accountDao = new AccountDaoImpl();
 
 	private final static Logger LOGGER = Logger.getLogger(AccountServiceImpl.class.getName());
 	
