@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.globant.trial.dao.AccountDao;
@@ -54,16 +55,22 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public void update(Account account) throws DaoException {
+		Session session = null;
+		Transaction tx = null;
 		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
 			session.update(account);
-			session.getTransaction().commit();
-			session.close();
+			tx.commit();
 		} catch (Exception e) {
+			tx.rollback();
 			LOGGER.severe("Error while updating account with accountNumber: "+account.getAccountNumber()+". Error: "
 					+ e.getMessage());
 			throw new DaoException(e);
+		} finally {
+			if(session != null){
+				session.close();
+			}
 		}
 	}
 }
